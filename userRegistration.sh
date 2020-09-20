@@ -37,9 +37,9 @@ if [[ $mobile =~ $mobilePattern ]]
         else
                 echo "$mobile : It's an Invalid Mobile Number"
         fi
-if [[ ${#password} -ge 8 ]]
+if [[ ${#password} -ge 8 && $password =~ [[:upper:]] ]]
         then
                 echo "Password Set Successfully "
         else
-echo  "Incorrect Password Your Password Must Have length should be minimum 8 characters"
+echo  "Incorrect Password Your Password Must Have upper case and length should be minimum 8 characters"
         fi

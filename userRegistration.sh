@@ -12,6 +12,8 @@ emailPattern="^[[:lower:]]{3}[a-zA-Z0-9]*([-+_.]?[a-zA-Z0-9])*@[a-z]{2,}.[a-z]{2
 
 mobilePattern="^[0-9]{2}[[:space:]][0-9]{10}$"
 
+specialChar=$(($(tr -d '[[:alnum:]]' <<< $password | wc -m )-1))
+
 if [[ $firstName =~ $pattern ]]
         then
                 echo "First Name : $firstName is Valid"
@@ -37,9 +39,9 @@ if [[ $mobile =~ $mobilePattern ]]
         else
                 echo "$mobile : It's an Invalid Mobile Number"
         fi
-if [[ ${#password} -ge 8 && $password =~ [[:upper:]] && $password =~ [[:digit:]] ]]
+if [[ ${#password} -ge 8 && $password =~ [[:upper:]] && $password =~ [[:digit:]] && $specialChar -eq 1 ]]
         then
                 echo "Password Set Successfully "
         else
-echo  "Incorrect Password Your Password Must Have upper case ,digit and length should be minimum 8 characters"
+echo  "Incorrect Password Your Password Must Have upper case ,digit , exactly 1 special character and length should be minimum 8 characters"
         fi
